@@ -25,13 +25,15 @@ Window {
     }
 
     Component {
-        id: phoneDelegate
-        Item {
-            height: 40
-            width: ListView.view.width
-            Column {
-                Text { text: '<b>Name:</b> ' + name }
-                Text { text: '<b>Number:</b> ' + number }
+        id: phoneDelegateExt
+        Text {
+            readonly property ListView __lv: ListView.view
+            width: parent.width
+            text: '<b>Name:</b> ' + model.name + '<b>number:<b>' + model.number
+            font.pixelSize: 12
+            MouseArea{
+                anchors.fill: parent
+                onClicked: __lv.currentIndex = model.index
             }
         }
     }
@@ -39,7 +41,7 @@ Window {
     ListView{
         anchors.fill: parent
         model: phoneNumbers
-        delegate: phoneDelegate
+        delegate: phoneDelegateExt
         header: Rectangle{
             height: 5
             anchors {left: parent.left; right: parent.right }
