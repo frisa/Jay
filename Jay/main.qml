@@ -24,11 +24,23 @@ Window {
         }
     }
 
+    Component {
+        id: phoneDelegate
+        Item {
+            height: 40
+            width: ListView.view.width
+            Column {
+                Text { text: '<b>Name:</b> ' + name }
+                Text { text: '<b>Number:</b> ' + number }
+            }
+        }
+    }
+
     ListView{
         anchors.fill: parent
         model: phoneNumbers
-        delegate: Text {
-                text: name + ": " + number
-            }
+        delegate: phoneDelegate
+        highlight: Rectangle { color: "lightsteelblue"; radius: 2 }
+        focus: true
     }
 }
