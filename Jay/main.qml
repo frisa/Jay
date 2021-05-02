@@ -51,6 +51,21 @@ Window {
         anchors.fill: parent
         model: phoneNumbers
         delegate: phoneDelegateExt
+        section.property: "country"
+        section.criteria: ViewSection.FullString
+        section.delegate: Rectangle{
+            color: "#b0dfb0"
+            width: parent.width
+            implicitHeight: textSection.implicitHeight + 4
+            Text{
+                id: textSection
+                anchors.centerIn: parent
+                font.pixelSize: 10
+                font.bold: true
+                text: section
+            }
+        }
+
         header: Rectangle{
             height: 5
             anchors {left: parent.left; right: parent.right }
