@@ -2,8 +2,8 @@ import QtQuick 2.12
 import QtQuick.Window 2.12
 
 Window {
-    width: 640
-    height: 480
+    width: 500
+    height: 250
     visible: true
     title: qsTr("Jay")
 
@@ -40,7 +40,22 @@ Window {
         anchors.fill: parent
         model: phoneNumbers
         delegate: phoneDelegate
-        highlight: Rectangle { color: "lightsteelblue"; radius: 2 }
+        header: Rectangle{
+            height: 5
+            anchors {left: parent.left; right: parent.right }
+            color: 'green'
+        }
+        footer:Rectangle{
+            height: 5
+            anchors {left: parent.left; right: parent.right }
+            color: 'blue'
+        }
+
+        highlight: Rectangle {
+            anchors {left: parent.left; right: parent.right }
+            color: "lightsteelblue"; radius: 2
+        }
         focus: true
+        flickableDirection: Flickable.AutoFlickDirection
     }
 }
